@@ -65,8 +65,23 @@ main {
 }
 
 header {
+	display: flex;
+	align-items: center;
 	border-bottom: $border-width solid $border-color;
 	border-right: $border-width solid $border-color;
+	padding: var(--large);
+}
+
+.logo {
+	min-width: 8rem;
+	min-height: 8rem;
+	max-width: 10rem;
+	max-height: 10rem;
+	img {
+		width: 100%;
+		height: auto;
+		vertical-align: top;
+	}
 }
 
 // Typography ============================================================================
@@ -199,6 +214,7 @@ time {
 	position: relative;
 	z-index: 2;
 	background: white;
+	border-radius: var(--radius);
 }
 
 .carbon-img {

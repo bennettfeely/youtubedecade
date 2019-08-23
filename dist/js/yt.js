@@ -1,15 +1,15 @@
-// var today_date = new Date();
-// var today = {
-// 	y: today_date.getFullYear(),
-// 	m: today_date.getMonth() + 1,
-// 	d: today_date.getDate()
-// };
-
+var today_date = new Date();
 var today = {
-	y: 2019,
-	m: 9,
-	d: 3
+	y: today_date.getFullYear(),
+	m: today_date.getMonth() + 1,
+	d: today_date.getDate()
 };
+
+// var today = {
+// 	y: 2019,
+// 	m: 9,
+// 	d: 3
+// };
 
 init();
 
@@ -109,16 +109,24 @@ function countDown() {
 	var minutesleft = 59 - now.getMinutes();
 	var secondsleft = 59 - now.getSeconds();
 
-	if (hoursleft == 1) {
-		var hoursleft = hoursleft + " hour, ";
+	if (hoursleft == 0) {
+		var hoursleft = "";
 	} else {
-		var hoursleft = hoursleft + " hours, ";
+		if (hoursleft == 1) {
+			var hoursleft = hoursleft + " hour, ";
+		} else {
+			var hoursleft = hoursleft + " hours, ";
+		}
 	}
 
-	if (minutesleft == 1) {
-		var minutesleft = minutesleft + " minute, ";
+	if (minutesleft == 0 && hoursleft == 0) {
+		var minutesleft = "";
 	} else {
-		var minutesleft = minutesleft + " minutes, ";
+		if (minutesleft == 1) {
+			var minutesleft = minutesleft + " minute, ";
+		} else {
+			var minutesleft = minutesleft + " minutes, ";
+		}
 	}
 
 	if (secondsleft == 1) {
