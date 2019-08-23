@@ -10,8 +10,6 @@ var today = {
 init();
 
 function init() {
-	setToday();
-
 	// Get data
 	loadVideoList(today.y, today.m, today.d);
 
@@ -23,7 +21,7 @@ function init() {
 		"\n" +
 		"\nloadVideoList(yyyy, m, d)" +
 		"\n" +
-		"\n(e.g. loadVideoList(2019, 8, 23) to load videos from 2009.)" +
+		"\n(e.g. loadVideoList(2019, 8, 23) to load videos from 2009)" +
 		"\n" +
 		"\nThis will work only if the json data file has been created for that date, which starts around August 22, 2009 and ends sometime after today." +
 		"\n" +
@@ -35,7 +33,7 @@ function init() {
 }
 
 // Convert js date into month, d, yyyy
-function setToday() {
+function setToday(y, m, d) {
 	var months = [
 		"January",
 		"February",
@@ -50,20 +48,19 @@ function setToday() {
 		"November",
 		"December"
 	];
-	var month = months[today.m - 1];
-	var day = today.d;
-	var year = today.y - 10;
+	var month = months[m - 1];
+	var day = d;
+	var year = y - 10;
 
 	// Update header with the date minus 10 years ago
 	document.querySelector(".today").innerHTML =
 		month + " " + day + ", " + year;
-
-	// Update header with tomrrow's date minus 10 years
-	document.querySelector(".tomorrow").innerHTML =
-		month + " " + (day + 1) + ", " + year;
 }
 
 function loadVideoList(y, m, d) {
+	// Update date in header to loaded date
+	setToday(y, m, d);
+
 	// Format of data lists
 	var url = "../data/" + y + "_" + m + "_" + d + ".json";
 

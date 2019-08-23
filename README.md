@@ -1,5 +1,7 @@
-# Soteria Radar
+# YouTube Decade
 
-Live: https://soteriaradar.org
+Watch the biggest YouTube videos posted on this day ten years ago.
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/afbd9e27-e7af-45c9-aeaa-d9bbec92dd7b/deploy-status)](https://app.netlify.com/sites/soteriaradar/deploys)
+Live: https://youtubedecade.netlify.com
+
+[![Netlify Status](https://api.netlify.com/api/v1/badges/63689f8a-d710-48d3-8e2c-371906084057/deploy-status)](https://app.netlify.com/sites/youtubedecade/deploys)

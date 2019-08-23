@@ -141,32 +141,6 @@ noscript,
 	display: none;
 }
 
-// Logo ==================================================================================
-.logo {
-	padding-bottom: 0;
-
-	@media (min-width: $tablet) {
-		padding-bottom: $large;
-	}
-
-	img {
-		width: 4rem;
-		height: 4rem;
-		vertical-align: top;
-
-		@media (min-width: $tablet) {
-			width: 7rem;
-			height: 7rem;
-		}
-	}
-}
-
-.hgroup {
-	@media (min-width: $tablet), (orientation: landscape) {
-		flex: 1;
-	}
-}
-
 // Videos ================================================================================
 .grid-item {
 	display: inline-block;
@@ -277,7 +251,12 @@ noscript,
 	display: flex;
 	align-items: center;
 	flex: 1;
-	padding: 0 $large;
+	font-size: 80%;
+
+	@media (min-width: $tablet) {
+		padding: 0 $large;
+		font-size: 100%;
+	}
 
 	h2 {
 		font-weight: 400;
