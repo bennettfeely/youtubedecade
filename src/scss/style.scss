@@ -186,6 +186,21 @@ time {
 	);
 }
 
+.critical-content-wrapper {
+	position: relative;
+}
+
+.beg {
+	position: absolute;
+	z-index: 1;
+}
+
+#carbonads {
+	position: relative;
+	z-index: 2;
+	background: white;
+}
+
 .carbon-img {
 	display: block;
 	padding: var(--medium);
