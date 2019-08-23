@@ -17,10 +17,26 @@ var today = {
 init();
 
 function init() {
-	console.log("init();");
-
 	setToday();
-	loadVideoList();
+	loadVideoList(today.y, today.m, today.d);
+
+	// Start the countdown until tomorrow
+	setInterval(countDown, 1000);
+
+	var hacker_message =
+		"Wow you are smart. Here's a secret to load up any date, type below:" +
+		"\n" +
+		"\nloadVideoList(yyyy, m, d)" +
+		"\n" +
+		"\n(e.g. loadVideoList(2019, 8, 23) to load videos from 2009.)" +
+		"\n" +
+		"\nThis will work only if the json data file has been created for that date, which starts around August 22, 2009 and ends sometime after today." +
+		"\n" +
+		"\nFollow me on Twitter @bennettfeely, or maybe chip in anything via PayPal paypal.me/bennettfeely" +
+		"\n" +
+		"\nOtherwise, enjoy! God Bless.";
+
+	console.log(hacker_message);
 }
 
 // Convert js date into month, d, yyyy
@@ -52,11 +68,9 @@ function setToday() {
 		month + " " + (day + 1) + ", " + year;
 }
 
-function loadVideoList() {
-	console.log("loadVideoList();");
-
+function loadVideoList(y, m, d) {
 	// Format of data lists
-	var url = "../data/" + today.y + "_" + today.m + "_" + today.d + ".json";
+	var url = "../data/" + y + "_" + m + "_" + d + ".json";
 
 	// Fetch json
 	fetch(url)
@@ -66,13 +80,8 @@ function loadVideoList() {
 		.then(video_list => {
 			// Fill page with videos
 			buildPage(video_list.video);
-
-			// Start the countdown until tomorrow
-			countDown();
 		})
 		.catch(err => {
-			console.log("Error Reading data " + err);
-
 			// Show the error message
 			document.querySelector(".error").style.display = "block";
 
@@ -84,8 +93,6 @@ function loadVideoList() {
 
 // Fill page with videos
 function buildPage(video_list) {
-	console.log("buildPage();");
-
 	// Run through videos in array
 	for (const video of video_list) {
 		// Skip over the featured list item if it is there
@@ -124,8 +131,6 @@ function buildPage(video_list) {
 }
 
 function countDown() {
-	console.log("countDown();");
-
 	var now = new Date();
 	var hoursleft = 23 - now.getHours();
 	var minutesleft = 59 - now.getMinutes();
@@ -160,6 +165,4 @@ function countDown() {
 	//display
 	document.querySelector(".countdown").innerHTML =
 		hoursleft + minutesleft + secondsleft;
-
-	setInterval(countDown, 1000);
 }
