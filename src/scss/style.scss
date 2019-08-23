@@ -187,14 +187,21 @@ noscript,
 	margin-top: $medium;
 }
 
+.video-channelTitle {
+	font-size: 0.8em;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
 // Ad ====================================================================================
 .critical-wrapper {
 	overflow: hidden;
 	background: linear-gradient(
 		135deg,
 		$highlight 0,
-		$highlight 33%,
-		$white 33%,
+		$highlight 30%,
+		$white 30%,
 		$white
 	);
 }
