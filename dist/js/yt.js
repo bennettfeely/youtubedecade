@@ -3,21 +3,16 @@ var today_date = new Date();
 var today = {
 	y: today_date.getFullYear(),
 	m: today_date.getMonth() + 1,
-	d: today_date.getDate() + 1
+	d: today_date.getDate()
 };
-
-// // Debug date
-// var today = {
-// 	y: 2019,
-// 	m: 9,
-// 	d: 3
-// };
 
 // Start things up
 init();
 
 function init() {
 	setToday();
+
+	// Get data
 	loadVideoList(today.y, today.m, today.d);
 
 	// Start the countdown until tomorrow
