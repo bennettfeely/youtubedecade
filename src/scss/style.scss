@@ -1,0 +1,231 @@
+// Charset =====================================================================
+@charset "UTF-8";
+
+// Normalize ===================================================================
+@import "normalize";
+@import "reset";
+@import "extensions";
+@import "functions";
+
+// Variables ===================================================================
+$black: #282828;
+$white: #fff;
+$gray-900: mix($black, $white, 90%);
+$gray-800: mix($black, $white, 80%);
+$gray-700: mix($black, $white, 70%);
+$gray-600: mix($black, $white, 60%);
+$gray-500: mix($black, $white, 50%);
+$gray-400: mix($black, $white, 40%);
+$gray-300: mix($black, $white, 30%);
+$gray-200: mix($black, $white, 20%);
+$gray-100: mix($black, $white, 10%);
+$gray-50: mix($black, $white, 5%);
+
+$offwhite: #f5f5f5;
+
+$gray-700a: rgba($black, 0.75);
+$gray-300a: rgba($black, 0.3);
+$gray-100a: rgba($black, 0.1);
+
+$gold: #e8c166;
+$red: #f00;
+$highlight: #fffdc9;
+
+$mobile: 32em;
+$tablet: 44em;
+$desktop: 66em;
+
+$border-color: #ddd;
+$border-width: 1px;
+
+:root {
+	--small: 0.25rem;
+	--medium: 0.5rem;
+	--large: 1rem;
+	--extra-large: 1.5rem;
+	--radius: 4px;
+	--transition: 0.2s;
+	--transition-hover: 0.05s;
+}
+
+// Base Styles ===========================================================================
+body {
+	font-family: Roboto, Arial, sans-serif;
+	font-size: 100%;
+	line-height: 1.2;
+	color: $black;
+	background-color: $white;
+}
+
+main {
+	border: $border-width solid $border-color;
+	border-bottom: 0;
+	border-right: 0;
+	background: $white;
+}
+
+header {
+	border-bottom: $border-width solid $border-color;
+	border-right: $border-width solid $border-color;
+}
+
+// Typography ============================================================================
+h1 {
+	font-size: 2em;
+}
+h2 {
+	font-size: 1.1em;
+
+	&.subtitle {
+		font-size: 1.5em;
+		font-weight: 400;
+		margin-top: var(--medium);
+	}
+}
+h3 {
+	font-size: 1em;
+}
+h4 {
+	font-weight: normal;
+	font-size: 1em;
+	opacity: 0.7;
+	margin-top: var(--small);
+}
+a {
+	color: $black;
+	text-decoration: none;
+
+	&:hover {
+		text-decoration: underline;
+	}
+}
+
+time {
+	border-bottom: thin solid $border-color;
+	color: $red;
+}
+
+// Structural Styles =====================================================================
+// .box {
+// 	background: $white;
+// 	box-shadow: 0 0.5rem 2rem $gray-100a;
+// 	border-radius: var(--radius);
+// }
+
+.container {
+	padding: var(--large);
+}
+
+.half-container {
+	padding: var(--small);
+}
+
+.full-container {
+	padding: var(--extra-large);
+}
+
+.flex-container {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+// Videos ================================================================================
+.grid-item {
+	display: inline-block;
+	width: 50%;
+	vertical-align: top;
+	border-right: $border-width solid $border-color;
+	border-bottom: $border-width solid $border-color;
+
+	@media (min-width: $mobile) {
+		width: 33.33%;
+	}
+
+	@media (min-width: $tablet) {
+		width: 25%;
+	}
+}
+
+.video-category {
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	border-bottom: thin solid $border-color;
+}
+
+.video-link {
+	display: block;
+	cursor: pointer;
+}
+
+.video-thumbnail {
+	width: 100%;
+	padding-bottom: 55%;
+	border-radius: var(--radius);
+	margin: var(--medium) 0;
+
+	background: $gray-100;
+	background-position: center center;
+	background-size: cover;
+}
+
+.video-meta {
+	display: block;
+	margin-top: var(--medium);
+}
+
+// Ad ====================================================================================
+.ad-wrapper {
+	overflow: hidden;
+	background: linear-gradient(
+		to bottom right,
+		$highlight 0,
+		$highlight 33%,
+		$white 33%,
+		$white
+	);
+}
+
+.carbon-img {
+	display: block;
+	padding: var(--medium);
+
+	img {
+		display: inline-block;
+		min-width: 100px;
+		width: 100%;
+		height: auto;
+		border-radius: var(--radius);
+		vertical-align: top;
+		box-shadow: 0 0.5rem 1rem $gray-100a;
+	}
+}
+
+.carbon-text {
+	display: block;
+	padding: var(--medium);
+}
+
+.carbon-poweredby {
+	font-size: 0.8em;
+	opacity: 0.7;
+	padding: var(--medium);
+}
+
+// Countdown =============================================================================
+.countdown-wrapper {
+	display: flex;
+	align-items: center;
+
+	h2 {
+		font-weight: 400;
+	}
+}
+
+// Footer ================================================================================
+footer {
+	flex: 1;
+	display: flex;
+	align-items: flex-end;
+	justify-content: flex-end;
+}
