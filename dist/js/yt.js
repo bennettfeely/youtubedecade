@@ -17,7 +17,7 @@ function init() {
 	setInterval(countDown, 1000);
 
 	var hacker_message =
-		"Wow you are smart. Here's a secret to load up any date, type below:" +
+		"Wow you are smart. Here's a secret to load up other dates, type below:" +
 		"\n" +
 		"\nloadVideoList(yyyy, m, d)" +
 		"\n" +
