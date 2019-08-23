@@ -217,10 +217,9 @@ noscript,
 	position: absolute;
 	z-index: 1;
 	padding: $large;
-	border-radius: $radius;
-	background: $white;
 	top: 0;
 	left: 0;
+	max-width: 15em;
 }
 
 #carbonads {
@@ -246,6 +245,7 @@ noscript,
 .carbon-text {
 	display: block;
 	padding: $medium 0;
+	max-width: 15em;
 }
 
 .carbon-poweredby {
