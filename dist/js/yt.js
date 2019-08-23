@@ -1,24 +1,29 @@
+// Get the current date
 var today_date = new Date();
 var today = {
 	y: today_date.getFullYear(),
 	m: today_date.getMonth() + 1,
-	d: today_date.getDate()
+	d: today_date.getDate() + 1
 };
 
+// // Debug date
 // var today = {
 // 	y: 2019,
 // 	m: 9,
 // 	d: 3
 // };
 
+// Start things up
 init();
 
 function init() {
+	console.log("init();");
+
 	setToday();
 	loadVideoList();
-	countDown();
 }
 
+// Convert js date into month, d, yyyy
 function setToday() {
 	var months = [
 		"January",
@@ -38,8 +43,11 @@ function setToday() {
 	var day = today.d;
 	var year = today.y - 10;
 
+	// Update header with the date minus 10 years ago
 	document.querySelector(".today").innerHTML =
 		month + " " + day + ", " + year;
+
+	// Update header with tomrrow's date minus 10 years
 	document.querySelector(".tomorrow").innerHTML =
 		month + " " + (day + 1) + ", " + year;
 }
@@ -47,26 +55,40 @@ function setToday() {
 function loadVideoList() {
 	console.log("loadVideoList();");
 
+	// Format of data lists
 	var url = "../data/" + today.y + "_" + today.m + "_" + today.d + ".json";
 
+	// Fetch json
 	fetch(url)
 		.then(response => {
-			// console.log(response);
 			return response.json();
 		})
 		.then(video_list => {
+			// Fill page with videos
 			buildPage(video_list.video);
+
+			// Start the countdown until tomorrow
+			countDown();
 		})
 		.catch(err => {
-			// Do something for an error here
 			console.log("Error Reading data " + err);
+
+			// Show the error message
+			document.querySelector(".error").style.display = "block";
+
+			// Hide the ad
+			document.querySelector(".critical-wrapper").style.display = "none";
+			document.querySelector(".countdown-wrapper").style.display = "none";
 		});
 }
 
+// Fill page with videos
 function buildPage(video_list) {
 	console.log("buildPage();");
 
+	// Run through videos in array
 	for (const video of video_list) {
+		// Skip over the featured list item if it is there
 		if (video.selector !== "featured") {
 			var base = "." + video.selector + " ";
 

@@ -35,18 +35,14 @@ $mobile: 32em;
 $tablet: 44em;
 $desktop: 66em;
 
-$border-color: #ddd;
+$border-color: $gray-300a;
 $border-width: 1px;
 
-:root {
-	--small: 0.25rem;
-	--medium: 0.5rem;
-	--large: 1rem;
-	--extra-large: 1.5rem;
-	--radius: 4px;
-	--transition: 0.2s;
-	--transition-hover: 0.05s;
-}
+$small: 0.25rem;
+$medium: 0.5rem;
+$large: 1rem;
+
+$radius: 4px;
 
 // Base Styles ===========================================================================
 body {
@@ -55,6 +51,8 @@ body {
 	line-height: 1.2;
 	color: $black;
 	background-color: $white;
+	max-width: 75em;
+	margin: 0 auto;
 }
 
 main {
@@ -65,23 +63,9 @@ main {
 }
 
 header {
-	display: flex;
-	align-items: center;
 	border-bottom: $border-width solid $border-color;
 	border-right: $border-width solid $border-color;
-	padding: var(--large);
-}
-
-.logo {
-	min-width: 8rem;
-	min-height: 8rem;
-	max-width: 10rem;
-	max-height: 10rem;
-	img {
-		width: 100%;
-		height: auto;
-		vertical-align: top;
-	}
+	padding: $large;
 }
 
 // Typography ============================================================================
@@ -90,11 +74,15 @@ h1 {
 }
 h2 {
 	font-size: 1.1em;
+	line-height: 1.4;
 
 	&.subtitle {
-		font-size: 1.5em;
 		font-weight: 400;
-		margin-top: var(--medium);
+		margin-top: $medium;
+
+		@media (min-width: $tablet) {
+			font-size: 1.4em;
+		}
 	}
 }
 h3 {
@@ -104,7 +92,7 @@ h4 {
 	font-weight: normal;
 	font-size: 1em;
 	opacity: 0.7;
-	margin-top: var(--small);
+	margin-top: $small;
 }
 a {
 	color: $black;
@@ -116,32 +104,66 @@ a {
 }
 
 time {
-	border-bottom: thin solid $border-color;
+	font-weight: bold;
 	color: $red;
 }
 
 // Structural Styles =====================================================================
-// .box {
-// 	background: $white;
-// 	box-shadow: 0 0.5rem 2rem $gray-100a;
-// 	border-radius: var(--radius);
-// }
-
 .container {
-	padding: var(--large);
+	padding: $large;
 }
 
 .half-container {
-	padding: var(--small);
-}
-
-.full-container {
-	padding: var(--extra-large);
+	padding: $small;
 }
 
 .flex-container {
 	display: flex;
 	flex-wrap: wrap;
+}
+
+// Errors ================================================================================
+noscript,
+.error {
+	border-bottom: thin solid $border-color;
+	border-right: thin solid $border-color;
+	text-align: center;
+
+	p {
+		background: $red;
+		color: $white;
+		border-radius: $radius;
+	}
+}
+
+.error {
+	display: none;
+}
+
+// Logo ==================================================================================
+.logo {
+	padding-bottom: 0;
+
+	@media (min-width: $tablet) {
+		padding-bottom: $large;
+	}
+
+	img {
+		width: 4rem;
+		height: 4rem;
+		vertical-align: top;
+
+		@media (min-width: $tablet) {
+			width: 7rem;
+			height: 7rem;
+		}
+	}
+}
+
+.hgroup {
+	@media (min-width: $tablet), (orientation: landscape) {
+		flex: 1;
+	}
 }
 
 // Videos ================================================================================
@@ -162,6 +184,7 @@ time {
 }
 
 .video-category {
+	@extend %no-select;
 	overflow: hidden;
 	white-space: nowrap;
 	text-overflow: ellipsis;
@@ -176,8 +199,8 @@ time {
 .video-thumbnail {
 	width: 100%;
 	padding-bottom: 55%;
-	border-radius: var(--radius);
-	margin: var(--medium) 0;
+	border-radius: $radius;
+	margin: $medium 0;
 
 	background: $gray-100;
 	background-position: center center;
@@ -186,14 +209,14 @@ time {
 
 .video-meta {
 	display: block;
-	margin-top: var(--medium);
+	margin-top: $medium;
 }
 
 // Ad ====================================================================================
 .critical-wrapper {
 	overflow: hidden;
 	background: linear-gradient(
-		to bottom right,
+		45deg,
 		$highlight 0,
 		$highlight 33%,
 		$white 33%,
@@ -203,60 +226,71 @@ time {
 
 .critical-content-wrapper {
 	position: relative;
+	margin-top: $medium;
+	padding: $large;
+	border-radius: $radius;
+	background: $white;
 }
 
 .beg {
 	position: absolute;
 	z-index: 1;
+	padding: $large;
+	border-radius: $radius;
+	background: $white;
+	top: 0;
+	left: 0;
 }
 
 #carbonads {
 	position: relative;
 	z-index: 2;
 	background: white;
-	border-radius: var(--radius);
+	border-radius: $radius;
 }
 
 .carbon-img {
 	display: block;
-	padding: var(--medium);
 
 	img {
 		display: inline-block;
 		min-width: 100px;
 		width: 100%;
 		height: auto;
-		border-radius: var(--radius);
+		border-radius: $radius;
 		vertical-align: top;
-		box-shadow: 0 0.5rem 1rem $gray-100a;
 	}
 }
 
 .carbon-text {
 	display: block;
-	padding: var(--medium);
+	padding: $medium 0;
 }
 
 .carbon-poweredby {
 	font-size: 0.8em;
 	opacity: 0.7;
-	padding: var(--medium);
 }
 
 // Countdown =============================================================================
 .countdown-wrapper {
 	display: flex;
 	align-items: center;
+	flex: 1;
+	padding: 0 $large;
 
 	h2 {
 		font-weight: 400;
+		max-width: 30rem;
 	}
-}
 
-// Footer ================================================================================
-footer {
-	flex: 1;
-	display: flex;
-	align-items: flex-end;
-	justify-content: flex-end;
+	p {
+		margin-top: $large;
+	}
+
+	&:hover {
+		a {
+			color: blue;
+		}
+	}
 }

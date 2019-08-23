@@ -21,15 +21,22 @@ html lang="en"
 		.container
 			main
 				header
-					.container.logo
-						img src="img/yt_ancient.png" width="250" height="250" alt="Old iPhone YouTube logo"
+					.flex-container
+						.container.logo
+							img src="img/yt_ancient.png" width="250" height="250" alt="Old iPhone YouTube logo"
+						.container.hgroup
+							h1 YouTube Decade
+							h2.subtitle
+								| Watch the most successful YouTube videos posted on this day ten years ago.
+							h2.subtitle 
+								| Below are the most viewed videos since they were published on 
+								time.today September 3, 2009
+				noscript
 					.container
-						h1 YouTube Decade
-						h2.subtitle
-							| Watch the most successful YouTube videos posted on this day ten years ago.
-						h2.subtitle 
-							| Below are the most viewed videos since they were published on 
-							time.today September 3, 2009
+						p.container Please enable javascript to retrieve the list of videos.
+				.error
+					.container
+						p.container Oh no, an error occurred and the videos aren't loading... Sorry.
 				section.video-list
 					.flex-container
 						.music.grid-item
@@ -135,7 +142,5 @@ html lang="en"
 									|  to see the most viewed videos posted on 
 									time.tomorrow September 6, 2009
 									| .
-						footer.grid-item
-							.container
 								p &copy; 2019 <a href="https://bennettfeely.com">Bennett Feely</a> (<a href="https://twitter.com/bennettfeely">@bennettfeely</a>)
 		script src="js/yt.js"
