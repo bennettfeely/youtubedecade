@@ -45,22 +45,25 @@ $large: 1rem;
 
 $radius: 4px;
 
+$transition: 0.3s;
+$transition-hover: 0.05s;
+
 // Base Styles ===========================================================================
 body {
 	font-family: Roboto, Arial, sans-serif;
 	font-size: 100%;
 	line-height: 1.2;
 	color: $black;
-	background-color: $white;
 	max-width: 75em;
-	margin: 0 auto;
+	margin: 0 auto 1em;
 }
 
 main {
-	border: $border-width solid $border-color;
+	border: $border-width double $border-color;
 	border-bottom: 0;
 	border-right: 0;
 	background: $white;
+	box-shadow: 0.5em 0.5em $gray-100;
 }
 
 header {
@@ -124,17 +127,13 @@ time {
 }
 
 // Errors ================================================================================
-noscript,
+.noscript,
 .error {
 	border-bottom: thin solid $border-color;
 	border-right: thin solid $border-color;
 	text-align: center;
-
-	p {
-		background: $red;
-		color: $white;
-		border-radius: $radius;
-	}
+	background: $red;
+	color: $white;
 }
 
 .error {
@@ -156,6 +155,10 @@ noscript,
 	@media (min-width: $tablet) {
 		width: 25%;
 	}
+
+	@media (min-width: $desktop) {
+		width: 20%;
+	}
 }
 
 .video-category {
@@ -176,10 +179,15 @@ noscript,
 	padding-bottom: 55%;
 	border-radius: $radius;
 	margin: $medium 0;
-
 	background: $gray-100;
 	background-position: center center;
 	background-size: cover;
+	transition: transform $transition;
+
+	.video-link:hover & {
+		box-shadow: 0 0.25rem 0.5rem $gray-100a;
+		transition-duration: $transition-hover;
+	}
 }
 
 .video-meta {
@@ -245,6 +253,7 @@ noscript,
 	display: block;
 	padding: $medium 0;
 	max-width: 15em;
+	font-size: 0.9em;
 }
 
 .carbon-poweredby {
@@ -268,14 +277,15 @@ noscript,
 		font-weight: 400;
 		max-width: 30rem;
 	}
+}
 
-	p {
-		margin-top: $large;
-	}
+// Footer ================================================================================
+footer {
+	text-align: right;
+	border-right: $border-width solid $border-color;
+	border-bottom: $border-width solid $border-color;
 
-	&:hover {
-		a {
-			color: blue;
-		}
+	&:hover a {
+		text-decoration: underline;
 	}
 }

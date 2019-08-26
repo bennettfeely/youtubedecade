@@ -4,7 +4,7 @@ html lang="en"
 		meta charset="utf-8"
 		meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"
 		title YouTube Decade
-		meta name="description" content="Watch the most viewed YouTube videos that were posted on this day exactly ten years ago."
+		meta name="description" content="Watch the most viewed YouTube videos posted on this day exactly ten years ago."
 		link href="/css/style.min.css" rel="stylesheet"
 		link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:700|Roboto:400,700&display=swap" rel="stylesheet" type="text/css"
 		link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png"
@@ -22,19 +22,18 @@ html lang="en"
 			main
 				header
 					.container
-						h1 YouTube Decade
+						h1 
+							a href="/" YouTube Decade
 						h2.subtitle
 							| Watch the biggest YouTube videos posted on this day ten years ago.
 						h2.subtitle 
 							| Below are the most viewed videos published on 
 							time.today September 3, 2009
 							| .
-				noscript
-					.container
-						p.container Please enable javascript to retrieve the list of videos.
+				noscript.noscript
+					p.container Please enable javascript to retrieve the list of videos.
 				.error
-					.container
-						p.container Oh no, an error occurred and the videos aren't loading... Sorry.
+					p.container Oh no, an error occurred and the videos aren't loading... Sorry.
 				section.video-list
 					.flex-container
 						.music.grid-item
@@ -136,7 +135,9 @@ html lang="en"
 							.container
 								h2 
 									| Come back in 
-									time.countdown 4 hours and 3 minutes
+									time.countdown a few hours
 									|  to see a new list of most viewed videos from ten years ago.
-								p &copy; 2019 <a href="https://bennettfeely.com">Bennett Feely</a> (<a href="https://twitter.com/bennettfeely">@bennettfeely</a>)
+				footer
+					.container
+						p &copy; 2019 <a href="https://bennettfeely.com">Bennett Feely</a> (<a href="https://twitter.com/bennettfeely">@bennettfeely</a>)
 		script src="js/yt.js"
