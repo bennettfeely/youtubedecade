@@ -162,7 +162,7 @@ time {
 		color: $white;
 	}
 
-	&:active {
+	&:not(disabled):active {
 		transition-duration: 0s;
 		transform: scale(1.1);
 		background: shade($red, 0.25%);
