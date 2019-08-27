@@ -1,68 +1,81 @@
-// Get the current date
-var today_date = new Date();
-var today = {
-	y: today_date.getFullYear(),
-	m: today_date.getMonth() + 1,
-	d: today_date.getDate()
-};
+var previous_day = document.querySelector("button.previous-day");
+var next_day = document.querySelector("button.next-day");
+
+var bounds = [
+	"2009-8-23",
+	moment()
+		.subtract(10, "y")
+		.format("YYYY-M-D")
+];
 
 // Start things up
 init();
 
 function init() {
+	var today = moment();
+	var targeted_date = moment();
+
 	// Get data
-	loadVideoList(today.y, today.m, today.d);
+	loadVideoList(targeted_date.subtract(10, "y"));
+
+	// Previous day button
+	previous_day.addEventListener("click", function() {
+		if (targeted_date.isAfter(bounds[0])) {
+			loadVideoList(targeted_date.subtract(1, "day"));
+		}
+	});
+
+	// Next day button
+	var next_day = document.querySelector("button.next-day");
+	next_day.addEventListener("click", function() {
+		if (targeted_date.isBefore(bounds[1])) {
+			loadVideoList(targeted_date.add(1, "day"));
+		}
+	});
 
 	// Start the countdown until tomorrow
 	setInterval(countDown, 1000);
-
-	var hacker_message =
-		"Wow you are smart. Here's a secret to load up other dates, type below:" +
-		"\n" +
-		"\nloadVideoList(yyyy, m, d)" +
-		"\n" +
-		"\n(e.g. loadVideoList(2019, 8, 23) to load videos from 2009)" +
-		"\n" +
-		"\nThis will work only if the json data file has been created for that date, which starts around August 22, 2009 and ends sometime after today." +
-		"\n" +
-		"\nFollow me on Twitter @bennettfeely, or maybe chip in anything via PayPal paypal.me/bennettfeely" +
-		"\n" +
-		"\nOtherwise, enjoy! God Bless.";
-
-	console.log(hacker_message);
 }
 
-// Convert js date into month, d, yyyy
-function setToday(y, m, d) {
-	var months = [
-		"January",
-		"February",
-		"March",
-		"April",
-		"May",
-		"June",
-		"July",
-		"August",
-		"September",
-		"October",
-		"November",
-		"December"
-	];
-	var month = months[m - 1];
-	var day = d;
-	var year = y - 10;
-
-	// Update header with the date minus 10 years ago
-	document.querySelector(".today").innerHTML =
-		month + " " + day + ", " + year;
-}
-
-function loadVideoList(y, m, d) {
+function loadVideoList(targeted_date) {
 	// Update date in header to loaded date
-	setToday(y, m, d);
+	document.querySelector(".today").innerHTML = targeted_date.format(
+		"MMMM D, YYYY"
+	);
+
+	if (targeted_date.isAfter(bounds[0])) {
+		previous_day.classList.remove("is-disabled");
+
+		previous_day.disabled = true;
+		setTimeout(function() {
+			previous_day.disabled = false;
+		}, 500);
+	} else {
+		previous_day.classList.add("is-disabled");
+		previous_day.disabled = true;
+	}
+
+	if (targeted_date.isBefore(bounds[1])) {
+		next_day.classList.remove("is-disabled");
+
+		next_day.disabled = true;
+		setTimeout(function() {
+			next_day.disabled = false;
+		}, 500);
+	} else {
+		next_day.classList.add("is-disabled");
+		next_day.disabled = true;
+	}
 
 	// Format of data lists
-	var url = "../data/" + y + "_" + m + "_" + d + ".json";
+	var url =
+		"../data/" +
+		targeted_date.year() +
+		"_" +
+		(targeted_date.month() + 1) +
+		"_" +
+		targeted_date.date() +
+		".json";
 
 	// Fetch json
 	fetch(url)
@@ -85,6 +98,16 @@ function loadVideoList(y, m, d) {
 
 // Fill page with videos
 function buildPage(video_list) {
+	// Load Ad
+	var ad = document.createElement("script");
+	ad.setAttribute("id", "_carbonads_js");
+	ad.setAttribute(
+		"src",
+		"//cdn.carbonads.com/carbon.js?serve=CKYIL27N&placement=bennettfeelycom"
+	);
+	document.querySelector(".critical-content").innerHTML = "";
+	document.querySelector(".critical-content").appendChild(ad);
+
 	// Run through videos in array
 	for (const video of video_list) {
 		// Skip over the featured list item if it is there

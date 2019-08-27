@@ -27,9 +27,11 @@ html lang="en"
 						h2.subtitle
 							| Watch the biggest YouTube videos posted on this day ten years ago.
 						h2.subtitle 
-							| Below are the most viewed videos published on 
-							time.today September 3, 2009
-							| .
+							| Below are the most viewed videos published on  
+							.time-scrubber
+								button.previous-day.is-disabled ◄
+								time.today August 22, 2009
+								button.next-day.is-disabled ►
 				noscript.noscript
 					p.container Please enable javascript to retrieve the list of videos.
 				.error
@@ -86,7 +88,7 @@ html lang="en"
 							.container
 								.critical-content-wrapper
 									p.beg I promise our only ad isn't annoying. Consider whitelisting this page. Thank you for visiting either way.
-									<script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?serve=CKYIL27N&placement=bennettfeelycom" id="_carbonads_js"></script>
+									.critical-content
 						.news_and_politics.grid-item
 							h2.video-category
 								.container News & Politics
@@ -140,4 +142,5 @@ html lang="en"
 				footer
 					.container
 						p &copy; 2019 <a href="https://bennettfeely.com">Bennett Feely</a> (<a href="https://twitter.com/bennettfeely">@bennettfeely</a>)
+		script src="js/moment.js"
 		script src="js/yt.js"

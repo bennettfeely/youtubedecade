@@ -55,7 +55,7 @@ body {
 	line-height: 1.2;
 	color: $black;
 	max-width: 75em;
-	margin: 0 auto 1em;
+	margin: 0 auto;
 }
 
 main {
@@ -63,10 +63,11 @@ main {
 	border-bottom: 0;
 	border-right: 0;
 	background: $white;
-	box-shadow: 0.5em 0.5em $gray-100;
 }
 
 header {
+	@extend %no-select;
+
 	border-bottom: $border-width solid $border-color;
 	border-right: $border-width solid $border-color;
 	padding: $large;
@@ -110,6 +111,64 @@ a {
 time {
 	font-weight: bold;
 	color: $red;
+}
+
+.time-scrubber {
+	display: inline-flex;
+	position: relative;
+	margin: 0 $medium;
+
+	&:hover {
+		border-color: $red;
+	}
+}
+
+.previous-day,
+.today,
+.next-day {
+	display: inline-block;
+	line-height: 2rem;
+	vertical-align: top;
+	border: 0;
+}
+
+.previous-day,
+.next-day {
+	cursor: pointer;
+	color: $red;
+	background: rgba($red, 0.1);
+	border-radius: $radius;
+	transition: transform $transition, background-color $transition;
+
+	&:hover {
+		background: $red;
+		color: $white;
+	}
+
+	&:active {
+		transition-duration: 0s;
+		transform: scale(1.1);
+		background: shade($red, 0.25%);
+	}
+
+	&:focus {
+		outline: 0;
+		box-shadow: 0 0 1rem rgba($red, 0.2);
+	}
+
+	&.is-disabled {
+		background: $white;
+		color: $gray-200;
+		cursor: default;
+		pointer-events: none;
+	}
+}
+
+.today {
+	@extend %no-select;
+	border-width: 2px;
+	padding: 0 $medium;
+	border-bottom-color: $red;
 }
 
 // Structural Styles =====================================================================
