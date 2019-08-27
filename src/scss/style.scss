@@ -113,10 +113,19 @@ time {
 	color: $red;
 }
 
+.time-scrubber-wrapper {
+	display: block;
+	margin: $medium 0 0;
+
+	@media (min-width: $tablet) {
+		display: inline-block;
+		margin: 0 $medium;
+	}
+}
+
 .time-scrubber {
 	display: inline-flex;
 	position: relative;
-	margin: 0 $medium;
 
 	&:hover {
 		border-color: $red;
@@ -134,11 +143,19 @@ time {
 
 .previous-day,
 .next-day {
+	display: flex;
+	align-items: center;
+	justify-content: center;
 	cursor: pointer;
 	color: $red;
 	background: rgba($red, 0.1);
 	border-radius: $radius;
 	transition: transform $transition, background-color $transition;
+	width: 2rem;
+	svg {
+		width: 1rem;
+		height: 1rem;
+	}
 
 	&:hover {
 		background: $red;

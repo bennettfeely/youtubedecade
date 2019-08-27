@@ -27,11 +27,16 @@ html lang="en"
 						h2.subtitle
 							| Watch the biggest YouTube videos posted on this day ten years ago.
 						h2.subtitle 
-							| Below are the most viewed videos published on  
-							.time-scrubber
-								button.previous-day.is-disabled ◄
-								time.today August 22, 2009
-								button.next-day.is-disabled ►
+							| Below are the most viewed videos published on 
+							.time-scrubber-wrapper 
+								.time-scrubber
+									button.previous-day.is-disabled
+										svg width="20" height="20" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 10 10"
+											path d="M2 5L8 2L8 8Z" stroke-linecap="round" stroke-linejoin="round" fill="currentColor" stroke="currentColor" stroke-width="1"
+									time.today August 22, 2009
+									button.next-day.is-disabled
+										svg width="20" height="20" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 10 10"
+											path d="M2 2L8 5L2 8Z" stroke-linecap="round" stroke-linejoin="round" fill="currentColor" stroke="currentColor" stroke-width="1"
 				noscript.noscript
 					p.container Please enable javascript to retrieve the list of videos.
 				.error
