@@ -1,3 +1,5 @@
+debug = false;
+
 var previous_day = document.querySelector("button.previous-day");
 var next_day = document.querySelector("button.next-day");
 
@@ -12,7 +14,6 @@ var bounds = [
 init();
 
 function init() {
-	var today = moment();
 	var targeted_date = moment();
 
 	// Get data
@@ -28,8 +29,13 @@ function init() {
 	// Next day button
 	var next_day = document.querySelector("button.next-day");
 	next_day.addEventListener("click", function() {
-		if (targeted_date.isBefore(bounds[1])) {
+		// Force load next video
+		if (debug == true) {
 			loadVideoList(targeted_date.add(1, "day"));
+		} else {
+			if (targeted_date.isBefore(bounds[1])) {
+				loadVideoList(targeted_date.add(1, "day"));
+			}
 		}
 	});
 
