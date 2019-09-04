@@ -1,10 +1,10 @@
-debug = false;
-
 var previous_day = document.querySelector("button.previous-day");
 var next_day = document.querySelector("button.next-day");
 
+console.log("test");
+
 var bounds = [
-	"2009-8-23",
+	moment("8-23-2009", "MM-DD-YYYY"),
 	moment()
 		.subtract(10, "y")
 		.format("YYYY-M-D")
@@ -29,13 +29,8 @@ function init() {
 	// Next day button
 	var next_day = document.querySelector("button.next-day");
 	next_day.addEventListener("click", function() {
-		// Force load next video
-		if (debug == true) {
+		if (targeted_date.isBefore(bounds[1])) {
 			loadVideoList(targeted_date.add(1, "day"));
-		} else {
-			if (targeted_date.isBefore(bounds[1])) {
-				loadVideoList(targeted_date.add(1, "day"));
-			}
 		}
 	});
 
