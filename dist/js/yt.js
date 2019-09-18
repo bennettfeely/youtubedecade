@@ -1,8 +1,6 @@
 var previous_day = document.querySelector("button.previous-day");
 var next_day = document.querySelector("button.next-day");
 
-console.log("test");
-
 var bounds = [
 	moment("8-23-2009", "MM-DD-YYYY"),
 	moment()
@@ -12,6 +10,11 @@ var bounds = [
 
 // Start things up
 init();
+
+// Debugger
+function debug(date) {
+	loadVideoList(moment(date));
+}
 
 function init() {
 	var targeted_date = moment();
@@ -85,9 +88,12 @@ function loadVideoList(targeted_date) {
 		})
 		.then(video_list => {
 			// Fill page with videos
-			buildPage(video_list.video);
+
+			buildPage(video_list);
 		})
 		.catch(err => {
+			console.log(err);
+
 			// Show the error message
 			document.querySelector(".error").style.display = "block";
 
@@ -110,7 +116,7 @@ function buildPage(video_list) {
 	document.querySelector(".critical-content").appendChild(ad);
 
 	// Run through videos in array
-	for (const video of video_list) {
+	for (const video of video_list.video) {
 		// Skip over the featured list item if it is there
 		if (video.selector !== "featured") {
 			var base = "." + video.selector + " ";
@@ -120,8 +126,9 @@ function buildPage(video_list) {
 				"https://www.youtube.com/watch?v=" + video.videoId;
 
 			// Video title
-			document.querySelector(base + ".video-title").innerHTML =
-				video.title;
+			document.querySelector(
+				base + ".video-title"
+			).innerHTML = decodeURIComponent(video.title);
 
 			// Thumbnail image
 			document.querySelector(
@@ -140,8 +147,9 @@ function buildPage(video_list) {
 				"https://www.youtube.com/channel/" + video.channelId;
 
 			// Video channel
-			document.querySelector(base + ".video-channelTitle").innerHTML =
-				video.channelTitle;
+			document.querySelector(
+				base + ".video-channelTitle"
+			).innerHTML = decodeURIComponent(video.channelTitle);
 		}
 	}
 }
