@@ -72,14 +72,17 @@ function loadVideoList(targeted_date) {
 	}
 
 	// Format of data lists
-	var url =
-		"../data/" +
-		targeted_date.year() +
-		"_" +
-		(targeted_date.month() + 1) +
-		"_" +
-		targeted_date.date() +
-		".json";
+	var year = targeted_date.year();
+	var month = (targeted_date.month() + 1);
+		if (month < 10) {
+			month = "0" + month;
+		}
+	var date = (targeted_date.date() + 1);
+		if (date < 10) {
+			date = "0" + date;
+		}
+
+	var url = "../data/" + year + "_" + month + "_" + date + ".json";
 
 	// Fetch json
 	fetch(url)
