@@ -22,7 +22,7 @@ function debug(date) {
 }
 
 function init() {
-	var targeted_date = moment();
+	var targeted_date = moment("2-05-2010");
 
 	// Get data
 	loadVideoList(targeted_date.subtract(10, "y"));
@@ -47,12 +47,10 @@ function init() {
 }
 
 function loadVideoList(targeted_date) {
-	// Update date in header to loaded date
-	// document.querySelector(".today").innerHTML = targeted_date.format(
-	// 	"MMMM D, YYYY"
-	// );
-	
-	document.querySelector(".today").innerHTML = "February 5, 2010";
+	Update date in header to loaded date
+	document.querySelector(".today").innerHTML = targeted_date.format(
+		"MMMM D, YYYY"
+	);
 
 	if (targeted_date.isAfter(bounds[0])) {
 		previous_day.classList.remove("is-disabled");
