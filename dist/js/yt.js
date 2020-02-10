@@ -9,8 +9,8 @@ var next_day = document.querySelector("button.next-day");
 // ];
 
 var bounds = [
-	moment("8-23-2009", "MM-DD-YYYY"),
-	moment("2-05-2010", "MM-DD-YYYY"),
+	moment("08-23-2009", "MM-DD-YYYY"),
+	moment("02-05-2010", "MM-DD-YYYY"),
 ];
 
 // Start things up
@@ -22,7 +22,7 @@ function debug(date) {
 }
 
 function init() {
-	var targeted_date = moment("2-05-2020", "MM-DD-YYYY");
+	var targeted_date = moment("05-02-2020");
 
 	// Get data
 	loadVideoList(targeted_date.subtract(10, "y"));
