@@ -22,7 +22,7 @@ function debug(date) {
 }
 
 function init() {
-	var targeted_date = moment("05-02-2020");
+	var targeted_date = moment("05-02-2020", "MM-DD-YYYY");
 
 	// Get data
 	loadVideoList(targeted_date.subtract(10, "y"));
