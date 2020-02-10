@@ -10,7 +10,7 @@ var next_day = document.querySelector("button.next-day");
 
 var bounds = [
 	moment("8-23-2009", "MM-DD-YYYY"),
-	moment("2-06-2010", "MM-DD-YYYY"),
+	moment("2-05-2010", "MM-DD-YYYY"),
 ];
 
 // Start things up
@@ -48,9 +48,11 @@ function init() {
 
 function loadVideoList(targeted_date) {
 	// Update date in header to loaded date
-	document.querySelector(".today").innerHTML = targeted_date.format(
-		"MMMM D, YYYY"
-	);
+	// document.querySelector(".today").innerHTML = targeted_date.format(
+	// 	"MMMM D, YYYY"
+	// );
+	
+	document.querySelector(".today").innerHTML = "February 5, 2010";
 
 	if (targeted_date.isAfter(bounds[0])) {
 		previous_day.classList.remove("is-disabled");
