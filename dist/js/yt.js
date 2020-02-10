@@ -1,11 +1,16 @@
 var previous_day = document.querySelector("button.previous-day");
 var next_day = document.querySelector("button.next-day");
 
+// var bounds = [
+// 	moment("8-23-2009", "MM-DD-YYYY"),
+// 	moment()
+// 		.subtract(10, "y")
+// 		.format("YYYY-M-D")
+// ];
+
 var bounds = [
 	moment("8-23-2009", "MM-DD-YYYY"),
-	moment()
-		.subtract(10, "y")
-		.format("YYYY-M-D")
+	moment("2-06-2010", "MM-DD-YYYY"),
 ];
 
 // Start things up
